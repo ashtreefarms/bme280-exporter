@@ -3,19 +3,22 @@
 import os
 from setuptools import find_packages, setup
 
+ABOUT = {}
+with open("bme280_exporter/__about__.py") as fp:
+    exec(fp.read(), ABOUT)
+
 README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
 
 setup(
-    name="bme280_exporter",
-    version="0.0.1-alpha",
-    author="Jake Krog",
-    author_email="jake.krog@gmail.com",
-    description="Prometheus exporter for the Bosch BME280 sensor",
+    name=ABOUT["__title__"],
+    version=ABOUT["__version__"],
+    author=ABOUT["__author__"],
+    author_email=ABOUT["__email__"],
+    description=ABOUT["__summary__"],
     long_description=README,
-    license="MIT",
+    license=ABOUT["__license__"],
     keywords=["raspberry pi", "rpi", "prometheus", "BME280", "i2c", "temperature", "humidity", "pressure"],
-    url="https://github.com/ashtreefarms/bme280_exporter",
-    download_url="https://github.com/ashtreefarms/bme280_exporter/tarball/0.0.1-alpha",
+    url=ABOUT["__uri__"],
     packages=find_packages(),
     install_requires=["Adafruit_BME280", "prometheus_client"],
     entry_points={
@@ -24,7 +27,7 @@ setup(
         ]
     },
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Environment :: Console"
         "Intended Audience :: Education",
         "Intended Audience :: Developers",
