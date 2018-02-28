@@ -7,7 +7,11 @@ ABOUT = {}
 with open("bme280_exporter/__about__.py") as fp:
     exec(fp.read(), ABOUT)
 
-README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
+
+def readme():
+    with open('README.rst') as f:
+        return f.read()
+
 
 setup(
     name=ABOUT["__title__"],
@@ -15,20 +19,20 @@ setup(
     author=ABOUT["__author__"],
     author_email=ABOUT["__email__"],
     description=ABOUT["__summary__"],
-    long_description=README,
+    long_description=readme(),
     license=ABOUT["__license__"],
     keywords=["raspberry pi", "rpi", "prometheus", "BME280", "i2c", "temperature", "humidity", "pressure"],
     url=ABOUT["__uri__"],
     packages=find_packages(),
     install_requires=["Adafruit_BME280", "prometheus_client"],
     entry_points={
-        'console_scripts': [
-            'bme280_exporter = bme280_exporter.__main__:main'
+        "console_scripts": [
+            "bme280_exporter = bme280_exporter.__main__:main"
         ]
     },
     classifiers=[
         "Development Status :: 4 - Beta",
-        "Environment :: Console"
+        "Environment :: Console",
         "Intended Audience :: Education",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",

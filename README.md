@@ -4,8 +4,7 @@ Python Prometheus exporter for the Bosch BME280 sensor
 
 ## Requirements
 
-This driver requires that you have previously installed the
-[Adafruit_Python_BME280](https://github.com/adafruit/Adafruit_Python_BME280) package.
+* [Adafruit_Python_BME280](https://github.com/adafruit/Adafruit_Python_BME280)
 
 ## Installation
 
@@ -41,7 +40,8 @@ optional arguments:
 
 ```bash
 docker pull ashtreefarms/bme280-exporter-rpi
-docker run -p 9500:9500 --device /dev/i2c-1 ashtreefarms/bme280-exporter-rpi
+docker run -p 9500:9500 --device /dev/i2c-1 ashtreefarms/bme280-exporter-rpi \
+           --labels '{"zone": "bedroom"}'
 ```
 
 # MIT License
